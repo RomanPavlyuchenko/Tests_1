@@ -38,7 +38,7 @@ def main(documents, directories):
             else:
                 print('Документ не найден')
         elif user_input == 'ap':
-            print(get_owner_list())
+            print(get_owner_list(documents))
         elif user_input == 's':
             document_number = input('Введите номер документа ')
             directory_number = search_shelf_document(directories, document_number)
@@ -71,7 +71,7 @@ def main(documents, directories):
             break
 
 
-def get_owner_list():
+def get_owner_list(documents):
     owner_list = []
     for document in documents:
         try:
@@ -121,7 +121,8 @@ def add_document(directories, new_document, documents=None):
             return True
         else:
             user_choose = input(
-                'Введенная полка не сущетсвует. Если хотите создат новую полку и добавить на нее документ, введите 1, чтобы изменить номер полки, введите другое, чтобы отменить добавление документа введите q ')
+                'Введенная полка не сущетсвует. Если хотите создатm новую полку и добавить на нее документ, '
+                'введите 1, чтобы изменить номер полки, введите другое, чтобы отменить добавление документа введите q ')
             if user_choose == '1':
                 directories[directory_number] = [new_document['number']]
                 if documents is not None: documents.append(new_document)
